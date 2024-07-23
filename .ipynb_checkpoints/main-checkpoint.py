@@ -15,6 +15,6 @@ df_collection = spark.createDataFrame([
 ])
 
 # SELECT Object.name, Collection.name FROM Object LEFT JOIN Collection ON Collection.id in Object.collections
-df_res = df_object.join(df_collection, array_contains(df_object['collections'], df_collection['id']), 'left').select(df_object['name'].alias('object_name'), df_collection['name'])
+df_res = df_object.join(df_collection, array_contains(df_object['collections'], df_collection['id']), 'left').select(df_object['name'], df_collection['name'])
 
 df_res.show()
